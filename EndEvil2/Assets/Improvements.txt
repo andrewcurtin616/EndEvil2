@@ -1,0 +1,21 @@
+
+	Improvements I want
+-Bullet hit point specific animations for zombies, maybe three for each point 'hit,stagger,death'
+	on arms legs body and head, total=18 anims
+-More enemy behaviors instead of one script for all, different stats too
+-More guns, different damage numbers for each and more firing types
+-Grenade types: frag grenade, soul grenade (halo plasma sticky), distraction device
+-Temporary weapon powerups or limited ammo types:
+	HellFire(damage over time), BoneChill(slow down), SoulSteal(electric arc)
+-Better weapon inventory
+-Better script organization with handlers and helpers
+-Better UI formatting
+-More player controls, also add a stamina bar
+-Melee with slight knock back
+-Accuracy for guns, changing based on movement and aiming, with a resizing crosshair to indicate
+-Better level layouts
+-Full adventure through the town with area objectives
+
+*Look for ways to demonstrate programming patterns
+*Could focus on just zombies
+*Some of these changes are big, like the hit point specific animations, but more fun

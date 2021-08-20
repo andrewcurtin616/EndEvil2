@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e57161650302af64d8464bf2e8234bcc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fireSound: {fileID: 8300000, guid: 8e2d38130be3af441912af41e467f5bc, type: 3}
+  - reloadSound: {fileID: 8300000, guid: e7f9fc7a31563c8489f5ef7d694fdc97, type: 3}
+  - outOfAmmoSound: {fileID: 8300000, guid: 401358f457fc05c489d5ce72d99f9d49, type: 3}
+  - impactParticle: {fileID: 8384147063587874343, guid: dd52477be34949545a35c994d1825999,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
