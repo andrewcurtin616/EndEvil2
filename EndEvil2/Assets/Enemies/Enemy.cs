@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
 
     UndeadManager undeadManager;
 
+    //Note: run animation moves character forward regardless of nav mesh
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();

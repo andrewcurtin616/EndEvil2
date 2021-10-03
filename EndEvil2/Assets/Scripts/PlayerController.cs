@@ -32,9 +32,13 @@ public class PlayerController : MonoBehaviour
     public List<BaseWeapon> weapons = new List<BaseWeapon>();
     BaseWeapon currentWeapon;
     //reference to child "FPSMarker" for weapon model and animations
-    public GameObject grenade;
+    /*public GameObject grenade;
     [HideInInspector]
-    public int grenadeCount = 5;
+    public int grenadeCount = 5;*/
+    //public Grenade selectedGrenade;
+    //public Dictionary<Grenade, int> grenades = new Dictionary<Grenade, int>();
+    public List<Grenade> grenades = new List<Grenade>();
+    int grenadeIndex = 0;
 
     [HideInInspector]
     public int health = 10;
@@ -51,8 +55,14 @@ public class PlayerController : MonoBehaviour
     public bool stopControl;
     public bool walkingAnimation = true;
 
+    public enum DamageType
+    {
+        None, HellFire, BoneChill, SoulSteal
+    }
+    public DamageType damageType = DamageType.None;
+
     // Start is called before the first frame update
-    void /*Start*/Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         viewCamera = Camera.main;
@@ -81,6 +91,7 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = walkSound;
         //Time.timeScale = 0.05f; //for testing
+        grenades.ForEach(delegate (Grenade g) { g.count = 3; });
     }
 
     private void Start()
@@ -228,7 +239,7 @@ public class PlayerController : MonoBehaviour
             if (sprintEnergy <= 0 || isAiming)
             { isSprinting = false; speed = 5; }
         }
-        if (!isSprinting && sprintEnergy != 100)
+        if (!isSprinting && sprintEnergy < 100)
             sprintEnergy += 0.4f;
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -284,8 +295,7 @@ public class PlayerController : MonoBehaviour
 
 
         //grenade
-        //spawn grenade and pass in camera forward vector for arc
-        if (Input.GetKeyDown(KeyCode.G) && grenade != null && grenadeCount > 0 &&
+        /*if (Input.GetKeyDown(KeyCode.G) && grenade != null && grenadeCount > 0 &&
             grenadeTimer+0.25f < Time.time)
         {
             Instantiate(grenade, transform.position+transform.forward,
@@ -293,7 +303,32 @@ public class PlayerController : MonoBehaviour
             grenadeCount--;
             GameManager.UpdateGrenades(grenadeCount);
             grenadeTimer = Time.time;
+        }*/
+
+        /*if (Input.GetKeyDown(KeyCode.G) && grenades.Count != 0 && grenades[selectedGrenade] > 0 &&
+            grenadeTimer + 0.25f < Time.time)
+        {
+            Instantiate(selectedGrenade, transform.position + transform.forward,
+                viewCamera.transform.rotation);
+            grenades[selectedGrenade]--;
+            GameManager.UpdateGrenades(grenades[selectedGrenade]);
+            grenadeTimer = Time.time;
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.G) && grenades[grenadeIndex].count > 0 &&
+            grenadeTimer + 0.25f < Time.time)
+        {
+            Instantiate(grenades[grenadeIndex], transform.position + transform.forward,
+                viewCamera.transform.rotation);
+            grenades[grenadeIndex].count--;
+            GameManager.UpdateGrenades(grenades[grenadeIndex].count);
+            grenadeTimer = Time.time;
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+            SwitchGrenades(grenadeIndex - 1);
+        if (Input.GetKeyDown(KeyCode.C))
+            SwitchGrenades(grenadeIndex + 1);
 
         //melee
         /*Never added*/
@@ -367,11 +402,25 @@ public class PlayerController : MonoBehaviour
             foreach (BaseWeapon weapon in weapons)
                 weapon.totalAmmo = weapon.maxAmmo;
 
-            if (grenadeCount > 6)
+            /*if (grenadeCount > 6)
                 grenadeCount = 8;
             grenadeCount += 2;
             GameManager.UpdateAmmo(currentWeapon.currentAmmo, currentWeapon.totalAmmo);
-            GameManager.UpdateGrenades(grenadeCount);
+            GameManager.UpdateGrenades(grenadeCount);*/
+
+            /*if (grenades[selectedGrenade] > 6)
+                grenades[selectedGrenade] = 8;
+            grenades[selectedGrenade] += 2;
+            GameManager.UpdateAmmo(currentWeapon.currentAmmo, currentWeapon.totalAmmo);
+            GameManager.UpdateGrenades(grenades[selectedGrenade]);*/
+
+            if (grenades[grenadeIndex].count > 6)
+                grenades[grenadeIndex].count = 8;
+            grenades[grenadeIndex].count += 2;
+            GameManager.UpdateAmmo(currentWeapon.currentAmmo, currentWeapon.totalAmmo);
+            GameManager.UpdateGrenades(grenades[grenadeIndex].count);
+
+            
         }
 
         if(other.gameObject.name == "DamageTest1")
@@ -416,6 +465,21 @@ public class PlayerController : MonoBehaviour
         speed = 5;
         StartCoroutine("StopAim");
         isAiming = false;
+    }
+
+    public void SwitchGrenades(int indexOfNext)
+    {
+        Debug.Log("this grenade");
+        if (indexOfNext < 0)
+            indexOfNext = grenades.Count-1;
+        else if (indexOfNext > grenades.Count-1)
+            indexOfNext = 0;
+        else
+            grenadeIndex = indexOfNext;
+
+        Debug.Log(grenades[grenadeIndex].gameObject.name);
+
+        GameManager.UpdateGrenades(grenades[grenadeIndex].count);
     }
 
     public void TakeDamage(int damage)

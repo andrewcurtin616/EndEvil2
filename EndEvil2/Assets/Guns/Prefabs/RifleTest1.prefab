@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4953902195922391635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: -0.45, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4300532950450007}
@@ -50,7 +50,7 @@ MonoBehaviour:
   damage: 3
   fireRate: 0.125
   reloadSpeed: 0.75
-  currentAmmo: 30
+  currentAmmo: 29
   totalAmmo: 0
   maxAmmo: 150
   clipSize: 30
@@ -59,10 +59,8 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 962e44f6ba0d7eb4d9ce44c34029e19f, type: 3}
   reloadSound: {fileID: 8300000, guid: 3d80211d0a7e9f244aa203fdbead0a4a, type: 3}
   outOfAmmoSound: {fileID: 8300000, guid: 18ba49bb229529f46ada9364e2b3db20, type: 3}
-  impactParticle: {fileID: 1892351807075712, guid: 611675ad5043442448bb27308276c6eb,
-    type: 3}
-  impactEnemyParticle: {fileID: 1892351807075712, guid: 76a0bc0347218c24daf7846c6adcbda3,
-    type: 3}
+  impactParticle: {fileID: 1892351807075712, guid: 611675ad5043442448bb27308276c6eb, type: 3}
+  impactEnemyParticle: {fileID: 1892351807075712, guid: 76a0bc0347218c24daf7846c6adcbda3, type: 3}
   muzzleFlash: {fileID: 0}
   relativePos: {x: 0.75, y: -0.45, z: 1}
 --- !u!82 &1798216093
@@ -235,33 +233,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
+    - target: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: UVModule.flipU
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-        type: 3}
+    - target: {fileID: 198515452120210940, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: UVModule.flipV
       value: 0
       objectReference: {fileID: 0}
@@ -269,8 +261,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!4 &4300532950450007 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   m_PrefabInstance: {fileID: 77337411}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1815251162
@@ -340,7 +331,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c0bf9d1fd848d554abda1ef59eb498bc, type: 3}
 --- !u!4 &4221976787007654 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4221978597732476, guid: c0bf9d1fd848d554abda1ef59eb498bc,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 4221978597732476, guid: c0bf9d1fd848d554abda1ef59eb498bc, type: 3}
   m_PrefabInstance: {fileID: 1815251162}
   m_PrefabAsset: {fileID: 0}

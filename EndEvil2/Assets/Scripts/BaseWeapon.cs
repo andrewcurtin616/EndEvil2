@@ -39,8 +39,6 @@ public class BaseWeapon : MonoBehaviour
     PlayerController player;
     //GameObject weaponModel;
 
-    //power up checks?
-
     Animator my_animation;
 
     GameManagerController GameManager;
@@ -75,6 +73,10 @@ public class BaseWeapon : MonoBehaviour
             Debug.Log("!Warning! BaseWeapon: " + gameObject.name + ", requires Animator Component");
 
         GameManager = GameManagerController.getInstance();
+        
+    }
+    private void Start()
+    {
         if (audioSource != null)
             audioSource.volume = GameManager.SFXVolumeSliderValue();
     }
@@ -153,6 +155,12 @@ public class BaseWeapon : MonoBehaviour
                 GameManager.UpdateScore(damage);
             }
 
+            BaseEnemyTest theEnemy;
+            if (hit.collider.gameObject.TryGetComponent(out theEnemy))
+            {
+                theEnemy.TakeDamage(damage, (int)player.damageType, hit);
+            }
+
             if (hit.collider.tag == "Enemy")
             {
                 Debug.Log("Calling undead hit");
@@ -165,6 +173,8 @@ public class BaseWeapon : MonoBehaviour
                 temp.transform.position = hit.point;
                 temp.transform.forward = hit.normal;
                 Destroy(temp, 1.5f);
+
+                
             }
 
             else if (impactParticle != null)
@@ -189,6 +199,12 @@ public class BaseWeapon : MonoBehaviour
                     {
                         Debug.Log("Hit Zombie");
                         GameManager.UpdateScore(damage);
+                    }
+
+                    BaseEnemyTest theEnemy;
+                    if (hit.collider.gameObject.TryGetComponent(out theEnemy))
+                    {
+                        theEnemy.TakeDamage(damage, (int)player.damageType, hit);
                     }
 
                     if (hit.collider.tag == "Enemy")
