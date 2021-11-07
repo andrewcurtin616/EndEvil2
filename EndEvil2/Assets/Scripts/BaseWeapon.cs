@@ -158,7 +158,7 @@ public class BaseWeapon : MonoBehaviour
             BaseEnemyTest theEnemy;
             if (hit.collider.gameObject.TryGetComponent(out theEnemy))
             {
-                theEnemy.TakeDamage(damage, (int)player.damageType, hit);
+                theEnemy.TakeDamage(damage, (int)player.damageType, hit); Debug.Log((int)player.damageType);
             }
 
             if (hit.collider.tag == "Enemy")

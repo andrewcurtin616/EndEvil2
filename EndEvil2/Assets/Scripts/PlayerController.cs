@@ -332,6 +332,16 @@ public class PlayerController : MonoBehaviour
 
         //melee
         /*Never added*/
+
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            if (damageType == DamageType.SoulSteal)
+                damageType = 0;
+            else
+                damageType = damageType + 1;
+            Debug.Log(damageType);
+        }
     }
 
     bool checkGround()

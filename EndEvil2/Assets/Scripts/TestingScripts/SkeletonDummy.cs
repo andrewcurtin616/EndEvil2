@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonDummy : MonoBehaviour
+public class SkeletonDummy : BaseEnemyTest
 {
     // Start is called before the first frame update
     void Start()

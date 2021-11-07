@@ -7,6 +7,7 @@ public class BaseEnemyTest : MonoBehaviour
 {
     public int health = 100;
     public GameObject impactParticle;
+    public float speed;
 
     bool onFire;
     float fireTime;
@@ -42,10 +43,7 @@ public class BaseEnemyTest : MonoBehaviour
             Destroy(temp, 1.5f);
         }
         if (damageType == 1)
-        {
             StartCoroutine("HellFire");
-
-        }
         else if (damageType == 2)
             StartCoroutine("BoneChill");
         else if (damageType == 3)
@@ -75,15 +73,16 @@ public class BaseEnemyTest : MonoBehaviour
     {
         if (!slowed)
         {
+            float originalSpeed = speed;
             slowed = true;
-            //change speed
+            speed = originalSpeed / 2;
             slowTime = Time.time + 1.25f;
             while (Time.time < slowTime)
             {
                 yield return null;
             }
             slowed = false;
-            //return speed to normal
+            speed = originalSpeed;
         }
         else if (Time.time + 5f > slowTime)
         {

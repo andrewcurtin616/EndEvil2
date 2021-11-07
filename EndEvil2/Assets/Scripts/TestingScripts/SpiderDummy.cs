@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderDummy : MonoBehaviour
+public class SpiderDummy : BaseEnemyTest
 {
     // Start is called before the first frame update
     void Start()
